@@ -16,7 +16,7 @@
       ]
     },
     "then": {
-      "effect": "Deny"
+      "effect": "deny"
     }
   },
   "parameters": {
@@ -26,10 +26,10 @@
           "Standard_DS1_v2",
           "Standard_DS3_v2",
           "Standard_DS5_v2"
-      ]
+      ],
       "metadata": {
         "displayName": "Allowed SKUs",
-        "description": "The list of SKUs that can be specified for virtual machines.",
+        "description": "The list of SKUs that can be specified for virtual machines."
       }
     }
   }
