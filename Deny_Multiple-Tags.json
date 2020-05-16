@@ -1,0 +1,47 @@
+{
+  "mode": "Indexed",
+  "policyRule": {
+    "if": {
+      "allOf": [
+        {
+          "field": "[concat('tags[', parameters('tagName1'), ']')]",
+          "exists": "false"
+        },
+        {
+          "field": "[concat('tags[', parameters('tagName2'), ']')]",
+          "exists": "false"
+        },
+        {
+          "field": "[concat('tags[', parameters('tagName3'), ']')]",
+          "exists": "false"
+        }
+      ]
+    },
+    "then": {
+      "effect": "deny"
+    }
+  },
+  "parameters": {
+    "tagName1": {
+      "type": "String",
+      "metadata": {
+        "displayName": "First Tag Name",
+        "description": "Name of the tag, such as 'environment'"
+      }
+    },
+    "tagName2": {
+      "type": "String",
+      "metadata": {
+        "displayName": "Second Tag Name",
+        "description": "Name of the tag, such as 'environment'"
+      }
+    },
+    "tagName3": {
+      "type": "String",
+      "metadata": {
+        "displayName": "Third Tag Name",
+        "description": "Name of the tag, such as 'environment'"
+      }
+    }
+  }
+}
