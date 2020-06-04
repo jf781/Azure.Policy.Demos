@@ -1,0 +1,80 @@
+{
+    "mode": "Indexed",
+    "policyRule": {
+        "if": {
+            "allOf": [
+                {
+                    "field": "[concat('tags[', parameters('tagName1'), ']')]",
+                    "Equals": "[parameters('tagValue1')]"
+                },
+                {
+                    "field": "[concat('tags[', parameters('tagName2'), ']')]",
+                    "Equals": "[parameters('tagValue2')]"
+                },
+                {
+                    "field": "[concat('tags[', parameters('managedTagName'), ']')]",
+                    "notEquals": "[parameters('managedTagValue')]"
+                }
+            ]
+        },
+        "then": {
+            "effect": "modify",
+            "details": {
+                "roleDefinitionIds": [
+                    "/providers/microsoft.authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c"
+                ],
+                "operations": [
+                    {
+                        "operation": "addOrReplace",
+                        "field": "[concat('tags[', parameters('managedTagName'), ']')]",
+                        "value": "[parameters('managedTagValue')]"
+                    }
+                ]
+            }
+        }
+    },
+    "parameters": {
+        "tagName1": {
+            "type": "String",
+            "metadata": {
+                "displayName": "Tag Name 1",
+                "description": "Name of a tag, such as 'Env'"
+            }
+        },
+        "tagValue1": {
+            "type": "String",
+            "metadata": {
+                "displayName": "Tag Value 1",
+                "description": "Value of 'Tag Name 1', such as 'production'"
+            }
+        },
+        "tagName2": {
+            "type": "String",
+            "metadata": {
+                "displayName": "Tag Name 2",
+                "description": "Name of a tag, such as 'App'"
+            }
+        },
+        "tagValue2": {
+            "type": "String",
+            "metadata": {
+                "displayName": "Tag Value 2",
+                "description": "Value of 'Tag Name 2', such as 'App01'"
+            }
+        },
+        "managedTagName": {
+            "type": "String",
+            "metadata": {
+                "displayName": "Managed Tag Name",
+                "description": "Name of the tag value to populate, such as 'MaintWindow'"
+            }
+        },
+        "managedTagValue": {
+            "type": "String",
+            "metadata": {
+                "displayName": "Managed Tag Value",
+                "description": "Value of the tag, such as 'Sat_00:00-04:00_CDT'"
+            }
+        }
+    }
+}
