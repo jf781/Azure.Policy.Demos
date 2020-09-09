@@ -1,0 +1,10 @@
+{
+   "if": {
+      "field": "[concat('tags[',parameters('tagName1'),parameters('tagName2'),']')]",
+      "exists": "false"
+   },
+   "then": {
+      "effect": "audit"
+   }  
+} 
+   

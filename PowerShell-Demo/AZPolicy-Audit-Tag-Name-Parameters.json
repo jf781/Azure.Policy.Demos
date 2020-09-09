@@ -1,0 +1,14 @@
+{
+    "tagName1": {
+        "type": "string",
+        "metadata":{
+            "displayName": "First required tag"
+        }
+    },    
+    "tagName2": {
+        "type": "string",
+        "metadata":{
+            "displayName": "Second required tag"
+        }
+    }
+}
